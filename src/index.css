@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-cyan: #22d3ee;
+  --color-emerald: #34d399;
+  --color-purple: #a78bfa;
+  --color-orange: #fb923c;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1f2937 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #374151;
+}
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: #000;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scanlines effect */
+.scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  animation: scanlines 8s linear infinite;
+}
+
+@keyframes scanlines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100px;
+  }
+}
+
+/* Grid background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Loading cube animation */
+.loading-cube {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-emerald));
+  animation: loading-cube 1.2s ease-in-out infinite;
+}
+
+@keyframes loading-cube {
+  0% {
+    transform: rotate(0deg) scale(1);
+    border-radius: 0;
+  }
+  25% {
+    transform: rotate(90deg) scale(0.8);
+    border-radius: 20%;
+  }
+  50% {
+    transform: rotate(180deg) scale(1);
+    border-radius: 50%;
+  }
+  75% {
+    transform: rotate(270deg) scale(0.8);
+    border-radius: 20%;
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    border-radius: 0;
+  }
+}
+
+/* Glow text effect */
+.glow-text {
+  text-shadow:
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 20px currentColor;
+}
+
+/* Card entrance animation */
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section > div > div,
+tbody tr {
+  animation: card-enter 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Pulse glow for trending items */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(251, 146, 60, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(251, 146, 60, 0.6);
+  }
+}
+
+.trending-pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(34, 211, 238, 0.3);
+  color: white;
+}
+
+/* Focus styles */
+button:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+}
+
+/* Mobile-friendly tap highlights */
+@media (hover: none) {
+  button:active {
+    transform: scale(0.98);
+  }
+}
